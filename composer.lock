@@ -1,0 +1,240 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "60684eeb22a9842566dbc114fed95a7c",
+    "content-hash": "14d61233cf7f83eb3f132385d42ad179",
+    "packages": [
+        {
+            "name": "arzynik/tipsy",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arzynik/tipsy.git",
+                "reference": "23905a36bd6cd2bad2065d0b007b66f5bfe8a4c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arzynik/tipsy/zipball/23905a36bd6cd2bad2065d0b007b66f5bfe8a4c8",
+                "reference": "23905a36bd6cd2bad2065d0b007b66f5bfe8a4c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tipsy\\": "src/"
+                },
+                "files": [
+                    "src/Tipsy.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Devin Smith",
+                    "email": "devin@tipsy.la",
+                    "homepage": "http://devin.la",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An MVW PHP framework",
+            "keywords": [
+                "framework",
+                "mvc",
+                "mvw",
+                "php"
+            ],
+            "time": "2015-12-09 20:18:34"
+        },
+        {
+            "name": "arzynik/tipsy-mvc",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arzynik/tipsy-mvc.git",
+                "reference": "a54b396b5864448ba0b16dde9f1c6a1b2d950356"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arzynik/tipsy-mvc/zipball/a54b396b5864448ba0b16dde9f1c6a1b2d950356",
+                "reference": "a54b396b5864448ba0b16dde9f1c6a1b2d950356",
+                "shasum": ""
+            },
+            "require": {
+                "arzynik/tipsy": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tipsy\\MVC\\": "src/"
+                },
+                "files": [
+                    "src/Run.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Devin Smith",
+                    "email": "devin@tipsy.la",
+                    "homepage": "http://devin.la",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An MVC extension for Tipsy",
+            "keywords": [
+                "extension",
+                "framework",
+                "mvc",
+                "php",
+                "plugin"
+            ],
+            "time": "2015-12-05 00:02:07"
+        },
+        {
+            "name": "lusitanian/oauth",
+            "version": "v0.8.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Lusitanian/PHPoAuthLib.git",
+                "reference": "486ee8580f578b9330c6b71b494491f1fd25c3ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/486ee8580f578b9330c6b71b494491f1fd25c3ed",
+                "reference": "486ee8580f578b9330c6b71b494491f1fd25c3ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "predis/predis": "0.8.*@dev",
+                "squizlabs/php_codesniffer": "2.*",
+                "symfony/http-foundation": "~2.1"
+            },
+            "suggest": {
+                "ext-openssl": "Allows for usage of secure connections with the stream-based HTTP client.",
+                "predis/predis": "Allows using the Redis storage backend.",
+                "symfony/http-foundation": "Allows using the Symfony Session storage backend."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "OAuth": "src",
+                    "OAuth\\Unit": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Desberg",
+                    "email": "david@daviddesberg.com"
+                },
+                {
+                    "name": "Elliot Chance",
+                    "email": "elliotchance@gmail.com"
+                },
+                {
+                    "name": "Pieter Hordijk",
+                    "email": "info@pieterhordijk.com"
+                }
+            ],
+            "description": "PHP 5.3+ oAuth 1/2 Library",
+            "keywords": [
+                "Authentication",
+                "authorization",
+                "oauth",
+                "security"
+            ],
+            "time": "2015-12-08 22:31:32"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "177a015cb0e19ff4a49e0e2e2c5fc1c1bee07002"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/177a015cb0e19ff4a49e0e2e2c5fc1c1bee07002",
+                "reference": "177a015cb0e19ff4a49e0e2e2c5fc1c1bee07002",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2015-11-30 12:36:17"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "arzynik/tipsy": 20,
+        "arzynik/tipsy-mvc": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

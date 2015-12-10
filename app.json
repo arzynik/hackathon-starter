@@ -1,0 +1,14 @@
+{
+	"name": "PHP Hackathon Starter",
+	"description": "A boilerplate for PHP web applications",
+	"website": "https://github.com/arzynik/hackathon-starter",
+	"repository": "https://github.com/arzynik/hackathon-starter",
+	"keywords": ["tipsy", "mvc", "framework", "hackathon"],
+	"addons": ["heroku-postgresql", "heroku-redis", "cleardb", "mongolab"],
+	"env": {
+		"ENV": "heroku"
+	},
+	"scripts": {
+		"postdeploy": "php install/install.php"
+	}
+}

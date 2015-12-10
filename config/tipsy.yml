@@ -1,0 +1,9 @@
+view:
+  path: ../app/view
+  layout: layouts/page
+
+db:
+  host: localhost
+  user: root
+  pass: root
+  database: hackathon-starter

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="App">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Hackathon Starter</title>
+		<? /*
+		visit https://www.bootstrapcdn.com/bootswatch/ for alternate themes. make sure you copu the full tag and not just the url
+		*/ ?>
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha256-sHwgyDk4CGNYom267UJX364ewnY4Bh55d53pxP5WDug= sha512-mkkeSf+MM3dyMWg3k9hcAttl7IVHe2BA1o/5xKLl4kBaP0bih7Mzz/DBy4y6cNZCHtE2tPgYBYH/KtEjOQYKxA==" crossorigin="anonymous">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="/assets/app.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+					<a href="/" class="navbar-brand"><i class="fa fa-cube"></i>Project name</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li ng-class="{active: route == 'home'}"><a href="/">Home</a></li>
+						<li ng-class="{active: route == 'api'}"><a href="/api">API Examples</a></li>
+						<li ng-class="{active: route == 'contact'}"><a href="/contact">Contact</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li ng-class="{active: route == 'login'}"><a href="/login">Login</a></li>
+						<li ng-class="{active: route == 'signup'}"><a href="/signup">Create Account</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div ng-view></div>
+		</div>
+
+		<footer class="footer">
+			<div class="container">
+				<p class="text-muted pull-left">© 2015 Company, Inc. All Rights Reserved</p>
+				<p class="text-muted pull-right">
+					<a href="https://github.com/arzynik/hackathon-starter">GitHub Project</a>
+				</p>
+			</div>
+		</footer>
+
+		<?=$templates?>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-route.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="/assets/app.js"></script>
+	</body>
+</html>
