@@ -4,111 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "31a6423df328d3c04d2978d63b36e4ed",
-    "content-hash": "8623ead4b3af1196053d934eee6c33df",
+    "hash": "55f89bf4ba9d153caed69523b3e52630",
+    "content-hash": "a8be8575f963d2e0fe379ee9c1d8bdca",
     "packages": [
-        {
-            "name": "arzynik/tipsy",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/arzynik/tipsy.git",
-                "reference": "50f695160cb12b98f81f90b0294e35472087827d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/arzynik/tipsy/zipball/50f695160cb12b98f81f90b0294e35472087827d",
-                "reference": "50f695160cb12b98f81f90b0294e35472087827d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Tipsy\\": "src/"
-                },
-                "files": [
-                    "src/Tipsy.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Devin Smith",
-                    "email": "devin@tipsy.la",
-                    "homepage": "http://devin.la",
-                    "role": "Developer"
-                }
-            ],
-            "description": "An MVW PHP framework",
-            "keywords": [
-                "framework",
-                "mvc",
-                "mvw",
-                "php"
-            ],
-            "time": "2015-12-09 20:47:19"
-        },
-        {
-            "name": "arzynik/tipsy-mvc",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/arzynik/tipsy-mvc.git",
-                "reference": "a54b396b5864448ba0b16dde9f1c6a1b2d950356"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/arzynik/tipsy-mvc/zipball/a54b396b5864448ba0b16dde9f1c6a1b2d950356",
-                "reference": "a54b396b5864448ba0b16dde9f1c6a1b2d950356",
-                "shasum": ""
-            },
-            "require": {
-                "arzynik/tipsy": "dev-master",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Tipsy\\MVC\\": "src/"
-                },
-                "files": [
-                    "src/Run.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Devin Smith",
-                    "email": "devin@tipsy.la",
-                    "homepage": "http://devin.la",
-                    "role": "Developer"
-                }
-            ],
-            "description": "An MVC extension for Tipsy",
-            "keywords": [
-                "extension",
-                "framework",
-                "mvc",
-                "php",
-                "plugin"
-            ],
-            "time": "2015-12-05 00:02:07"
-        },
         {
             "name": "lusitanian/oauth",
             "version": "v0.8.5",
@@ -224,6 +122,108 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2015-11-30 12:36:17"
+        },
+        {
+            "name": "tipsyphp/tipsy",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tipsyphp/tipsy.git",
+                "reference": "43f0aa5f311a67dd1305e79616220a9e88b1b7ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tipsyphp/tipsy/zipball/43f0aa5f311a67dd1305e79616220a9e88b1b7ff",
+                "reference": "43f0aa5f311a67dd1305e79616220a9e88b1b7ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tipsy\\": "src/"
+                },
+                "files": [
+                    "src/Tipsy.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Devin Smith",
+                    "email": "devin@tipsy.la",
+                    "homepage": "http://devin.la",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An MVW PHP framework",
+            "keywords": [
+                "framework",
+                "mvc",
+                "mvw",
+                "php"
+            ],
+            "time": "2015-12-10 18:36:21"
+        },
+        {
+            "name": "tipsyphp/tipsy-mvc",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tipsyphp/tipsy-mvc.git",
+                "reference": "f3b3812c8cae97b47e2d2f3e1eb1ba7ce0db0a7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tipsyphp/tipsy-mvc/zipball/f3b3812c8cae97b47e2d2f3e1eb1ba7ce0db0a7d",
+                "reference": "f3b3812c8cae97b47e2d2f3e1eb1ba7ce0db0a7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "tipsyphp/tipsy": "dev-master"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tipsy\\MVC\\": "src/"
+                },
+                "files": [
+                    "src/Run.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Devin Smith",
+                    "email": "devin@tipsy.la",
+                    "homepage": "http://devin.la",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An MVC extension for Tipsy",
+            "keywords": [
+                "extension",
+                "framework",
+                "mvc",
+                "php",
+                "plugin"
+            ],
+            "time": "2015-12-10 18:52:18"
         }
     ],
     "packages-dev": [],
@@ -231,8 +231,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "php": 10,
-        "arzynik/tipsy": 20,
-        "arzynik/tipsy-mvc": 20
+        "tipsyphp/tipsy": 20,
+        "tipsyphp/tipsy-mvc": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

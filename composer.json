@@ -1,8 +1,8 @@
 {
 	"require": {
 		"php": "~7.0@beta",
-		"arzynik/tipsy": "dev-master",
-		"arzynik/tipsy-mvc": "dev-master",
+		"tipsyphp/tipsy": "dev-master",
+		"tipsyphp/tipsy-mvc": "dev-master",
 		"lusitanian/oauth": "^0.8.3",
 		"symfony/yaml": "^3.0"
 	},
