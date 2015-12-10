@@ -4,7 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Tipsy\Tipsy;
 
-Tipsy::config('../config/*');
+Tipsy::config('../config/*.ini');
+Tipsy::config('../config/*.yml');
 
 /*
 if (getenv('CLEARDB_DATABASE_URL')) {
