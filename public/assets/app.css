@@ -19,6 +19,41 @@ body > .container {
 .container .text-muted {
 	margin: 20px 0;
 }
+.navbar {
+	transition: all .5s ease;
+}
+.page-home .navbar:not(.shrink) {
+	background: transparent;
+}
+.page-home .navbar:not(.shrink) .active a {
+	background: transparent !important;
+}
+.splash {
+	padding: 9em 0 2em;
+	background-color: #141d27;
+	background-size: 100%;
+	background-attachment: fixed;
+	color: #fff;
+	text-align: center;
+	height: 30em;
+}
+.splash h1 {
+	font-size: 3em;
+}
+.nav a {
+	transition: all .5s ease;
+}
+.product-items {
+	margin-top: 4em;
+	margin-bottom: 10em;
+}
+.product-items .fa {
+	margin-right: .4em;
+}
+
+.product-items > .row > div {
+	margin-bottom: 2em;
+}
 
 
 .btn-outline {
