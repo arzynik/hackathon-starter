@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "60684eeb22a9842566dbc114fed95a7c",
-    "content-hash": "14d61233cf7f83eb3f132385d42ad179",
+    "hash": "31a6423df328d3c04d2978d63b36e4ed",
+    "content-hash": "8623ead4b3af1196053d934eee6c33df",
     "packages": [
         {
             "name": "arzynik/tipsy",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/arzynik/tipsy.git",
-                "reference": "23905a36bd6cd2bad2065d0b007b66f5bfe8a4c8"
+                "reference": "50f695160cb12b98f81f90b0294e35472087827d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/arzynik/tipsy/zipball/23905a36bd6cd2bad2065d0b007b66f5bfe8a4c8",
-                "reference": "23905a36bd6cd2bad2065d0b007b66f5bfe8a4c8",
+                "url": "https://api.github.com/repos/arzynik/tipsy/zipball/50f695160cb12b98f81f90b0294e35472087827d",
+                "reference": "50f695160cb12b98f81f90b0294e35472087827d",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "mvw",
                 "php"
             ],
-            "time": "2015-12-09 20:18:34"
+            "time": "2015-12-09 20:47:19"
         },
         {
             "name": "arzynik/tipsy-mvc",
@@ -111,16 +111,16 @@
         },
         {
             "name": "lusitanian/oauth",
-            "version": "v0.8.4",
+            "version": "v0.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Lusitanian/PHPoAuthLib.git",
-                "reference": "486ee8580f578b9330c6b71b494491f1fd25c3ed"
+                "reference": "798260e55ac994636a9fa8b61adfdb67aab389c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/486ee8580f578b9330c6b71b494491f1fd25c3ed",
-                "reference": "486ee8580f578b9330c6b71b494491f1fd25c3ed",
+                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/798260e55ac994636a9fa8b61adfdb67aab389c9",
+                "reference": "798260e55ac994636a9fa8b61adfdb67aab389c9",
                 "shasum": ""
             },
             "require": {
@@ -174,7 +174,7 @@
                 "oauth",
                 "security"
             ],
-            "time": "2015-12-08 22:31:32"
+            "time": "2015-12-10 05:40:17"
         },
         {
             "name": "symfony/yaml",
@@ -230,11 +230,14 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "php": 10,
         "arzynik/tipsy": 20,
         "arzynik/tipsy-mvc": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "~7.0@beta"
+    },
     "platform-dev": []
 }
