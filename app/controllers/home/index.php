@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 class Home extends \Tipsy\Controller {
-	public function init() {
+	public function init($args = null) {
 		$templates = null;
 		if ($this->tipsy()->config()['view']['bundle']) {
 

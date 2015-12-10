@@ -3,7 +3,7 @@
 namespace App\Controller\Api;
 
 class User extends \App\Rest {
-	public function init() {
+	public function init($args = null) {
 		$this->inject(function($Request){
 			$user = new \App\User($Request->loc(2));
 			if ($user->dbId()) {
