@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class Home extends \Tipsy\Controller {
+class Error extends \Tipsy\Controller {
 	public function init() {
 		$this->tipsy()->view()->display('error');
 	}
