@@ -49,7 +49,7 @@ angular.module('App', ['ngRoute', 'ngResource'])
 			document.title = title ? title + ' | ' + 'Hackathon Starter' : 'Hackathon Starter';
 		};
 
-		var p = Trianglify({variance: '0.77', seed: 'tzlqe', x_colors: 'random', cell_size: 30});
+		var p = Trianglify({variance: '0.77', seed: null, x_colors: 'RdYlBu', cell_size: 30});
 		$rootScope.triangles = p.svg({includeNamespace: true});
 		$rootScope.triangles = '<svg style="-webkit-filter: brightness(.5)" xmlns="http://www.w3.org/2000/svg" width="600" height="400">' + $rootScope.triangles.innerHTML + '</svg>';
 	})

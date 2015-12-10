@@ -12,15 +12,18 @@ footer {
 	height: 60px;
 	background-color: #f5f5f5;
 }
+a, button {
+	cursor: pointer;
+}
 
-body > .container {
-	padding: 45px 15px 0;
+.page-header {
+	padding-top: 23px;
 }
 .container .text-muted {
 	margin: 20px 0;
 }
 .navbar {
-	transition: all .5s ease;
+	transition: background-color .5s ease;
 }
 .page-home .navbar:not(.shrink) {
 	background: transparent;
@@ -29,10 +32,12 @@ body > .container {
 	background: transparent !important;
 }
 .splash {
-	padding: 9em 0 2em;
+	padding-top: 80px;
 	background-color: #141d27;
 	background-size: 100%;
 	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: none !important;
 	color: #fff;
 	text-align: center;
 	height: 30em;
@@ -41,49 +46,53 @@ body > .container {
 	font-size: 3em;
 }
 .nav a {
-	transition: all .5s ease;
+	transition: background-color .5s ease;
+}
+.navbar:not(.shrink) a:visited {
+	color: #fff !important;
 }
 .product-items {
 	margin-top: 4em;
 	margin-bottom: 10em;
 }
-.product-items .fa {
+.product-items .fa, .btn .fa {
 	margin-right: .4em;
+}
+.navbar-brand .fa {
+	margin-right: .6em;
 }
 
 .product-items > .row > div {
 	margin-bottom: 2em;
 }
 
+.oauth-login .btn {
+	padding: .4em 1.2em .4em 1.2em;
+}
+.oauth-login .btn:hover {
 
-.btn-outline {
-	background-color: transparent;
-	color: inherit;
-	transition: all .25s;
-	cursor: pointer;
 }
-.btn-default.btn-outline {
-	color: #95a5a6;
+.btn-facebook {
+	border-color: #3b5998;
+	background: #3b5998;
 }
-.btn-primary.btn-outline {
-	color: #2c3e50;
+.btn-twitter {
+	border-color: #55acee;
+	background: #55acee;
 }
-.btn-success.btn-outline {
-	color: #18bc9c;
+.btn-google {
+	border-color: #dd4b39;
+	background: #dd4b39;
 }
-.btn-info.btn-outline {
-	color: #3498db;
+.btn-github {
+	border-color: #444444;
+	background: #444444;
 }
-.btn-warning.btn-outline {
-	color: #f39c12;
+.btn-linkedin {
+	border-color: #007bb6;
+	background: #007bb6;
 }
-.btn-danger.btn-outline {
-	color: #e74c3c;
-}
-.btn-primary.btn-outline:hover,
-.btn-success.btn-outline:hover,
-.btn-info.btn-outline:hover,
-.btn-warning.btn-outline:hover,
-.btn-danger.btn-outline:hover {
-	color: #fff;
+.btn-instagram {
+	border-color: #3f729b;
+	background: #3f729b;
 }
