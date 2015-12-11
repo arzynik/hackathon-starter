@@ -4,9 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "55f89bf4ba9d153caed69523b3e52630",
-    "content-hash": "a8be8575f963d2e0fe379ee9c1d8bdca",
+    "hash": "24f1dc42c8b4ff9daede78674ffe5749",
+    "content-hash": "f1b3779c6c049751146b62de1ed31e47",
     "packages": [
+        {
+            "name": "leafo/scssphp",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leafo/scssphp.git",
+                "reference": "e7d382952c4dffc29ae832a7a37ddc0f37e66e68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/e7d382952c4dffc29ae832a7a37ddc0f37e66e68",
+                "reference": "e7d382952c4dffc29ae832a7a37ddc0f37e66e68",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "kherge/box": "~2.5",
+                "phpunit/phpunit": "~3.7",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "bin": [
+                "bin/pscss"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Leafo\\ScssPhp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leaf Corcoran",
+                    "email": "leafot@gmail.com",
+                    "homepage": "http://leafo.net"
+                }
+            ],
+            "description": "scssphp is a compiler for SCSS written in PHP.",
+            "homepage": "http://leafo.github.io/scssphp/",
+            "keywords": [
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylesheet"
+            ],
+            "time": "2015-12-04 05:49:08"
+        },
         {
             "name": "lusitanian/oauth",
             "version": "v0.8.5",
@@ -129,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tipsyphp/tipsy.git",
-                "reference": "43f0aa5f311a67dd1305e79616220a9e88b1b7ff"
+                "reference": "f2e41a8f27e598329eca353d8bc6e060fce36cf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tipsyphp/tipsy/zipball/43f0aa5f311a67dd1305e79616220a9e88b1b7ff",
-                "reference": "43f0aa5f311a67dd1305e79616220a9e88b1b7ff",
+                "url": "https://api.github.com/repos/tipsyphp/tipsy/zipball/f2e41a8f27e598329eca353d8bc6e060fce36cf1",
+                "reference": "f2e41a8f27e598329eca353d8bc6e060fce36cf1",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +224,7 @@
                 "mvw",
                 "php"
             ],
-            "time": "2015-12-10 18:36:21"
+            "time": "2015-12-10 19:12:40"
         },
         {
             "name": "tipsyphp/tipsy-mvc",
@@ -179,12 +232,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tipsyphp/tipsy-mvc.git",
-                "reference": "f3b3812c8cae97b47e2d2f3e1eb1ba7ce0db0a7d"
+                "reference": "55623347ac980341874f24a38475cde7393a10da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tipsyphp/tipsy-mvc/zipball/f3b3812c8cae97b47e2d2f3e1eb1ba7ce0db0a7d",
-                "reference": "f3b3812c8cae97b47e2d2f3e1eb1ba7ce0db0a7d",
+                "url": "https://api.github.com/repos/tipsyphp/tipsy-mvc/zipball/55623347ac980341874f24a38475cde7393a10da",
+                "reference": "55623347ac980341874f24a38475cde7393a10da",
                 "shasum": ""
             },
             "require": {
@@ -223,7 +276,7 @@
                 "php",
                 "plugin"
             ],
-            "time": "2015-12-10 18:52:18"
+            "time": "2015-12-11 02:18:24"
         }
     ],
     "packages-dev": [],
