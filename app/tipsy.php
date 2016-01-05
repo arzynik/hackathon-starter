@@ -40,4 +40,7 @@ Tipsy::middleware('Session', [
 	}
 ]);
 
+// pointless headers
+header('X-Powered-By: PHP/'.phpversion().'; arzynik/hackathon-starter');
+
 Tipsy::run();
