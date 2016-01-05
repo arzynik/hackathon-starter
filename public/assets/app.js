@@ -14,22 +14,26 @@ angular.module('App', ['ngRoute', 'ngResource'])
 			.when('/login', {
 				action: 'login',
 				controller: 'Login',
-				templateUrl: 'templates/login.html'
+				templateUrl: 'templates/login.html',
+				auth: false
 			})
 			.when('/signup', {
 				action: 'signup',
 				controller: 'Signup',
-				templateUrl: 'templates/signup.html'
+				templateUrl: 'templates/signup.html',
+				auth: false
 			})
 			.when('/account', {
 				action: 'account',
 				controller: 'Account',
-				templateUrl: 'templates/account.html'
+				templateUrl: 'templates/account.html',
+				auth: true
 			})
 			.when('/forgot', {
 				action: 'forgot',
 				controller: 'Forgot',
-				templateUrl: 'templates/forgot.html'
+				templateUrl: 'templates/forgot.html',
+				auth: false
 			})
 			.otherwise({
 				redirectTo: '/'
@@ -41,7 +45,18 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		});
 	})
 
-	.run(function($rootScope, $location, $route, Auth) {
+	.run(function($rootScope, $location, $route, $location, Auth) {
+		$rootScope.$on('$routeChangeStart', function ($event, $currentRoute) {
+			if ($currentRoute.auth === true && (!$rootScope.user || !$rootScope.user.id)) {
+				//$location.path('/login');
+				//return;
+			}
+
+			if ($currentRoute.auth === false && $rootScope.user && $rootScope.user.id) {
+				$location.path('/account');
+				return;
+			}
+		});
 		$rootScope.$on('$routeChangeSuccess', function ($event, $currentRoute, $previousRoute) {
 			$rootScope.route = $route.current.action;
 		});
@@ -75,8 +90,6 @@ angular.module('App', ['ngRoute', 'ngResource'])
 
 	.service('User', function($resource) {
 		 return $resource('/api/user', {}, {
-			get: { 'method': 'GET', params : {}},
-			save: { 'method': 'POST', params : {}},
 			passwd: { url: '/api/passwd', 'method': 'POST', params : {}}
 		});
 	})
@@ -102,21 +115,29 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		}
 	})
 
-	.controller('Account', function ($rootScope, $scope, User) {
+	.controller('Account', function ($rootScope, $scope, $location, User) {
 		$rootScope.title('Account');
+		$scope.message = {};
 		$scope.save = function() {
 			User.save($rootScope.user, function(user) {
 				$rootScope.user = user;
+				$scope.message.profile = 1;
 			});
 		};
 		$scope.passwd = function() {
-			if ($scope.pass1 != $scope.pass2) {
-				$scope.passwordError = true;
+			if (!$scope.pass1 || $scope.pass1 != $scope.pass2) {
+				$scope.message.password = 2;
 				return;
 			}
 			User.passwd({pass: $scope.pass1}, function(user) {
 				$scope.password = '';
-				$scope.passwordError = false;
+				$scope.message.password = 1;
+			});
+		};
+		$scope.delete = function() {
+			User.delete(function(user) {
+				$rootScope.user = null;
+				// location.href = location.href;
 			});
 		};
 	});
