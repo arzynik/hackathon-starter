@@ -9,8 +9,9 @@ use OAuth\Common\Consumer\Credentials;
 class Auth extends \Tipsy\Controller {
 	public function init($args = null) {
 		$name = $this->tipsy()->request()->loc(1);
+
 		if (!$this->tipsy()->config()['auth'][$name]) {
-			die('no auth');
+			die('no auth config for '.$name);
 		}
 
 		$storage = new Session();

@@ -59,17 +59,25 @@ angular.module('App', ['ngRoute', 'ngResource'])
 	})
 
 	.service('Auth', function($resource, User) {
+		var res = $resource('/api/', {}, {
+			auth: { url: '/api/login', 'method': 'POST', params : {}}
+		});
+
 		return {
 			user: function() {
 				return User.get();
+			},
+			login: function(email, password, cb) {
+				res.auth({email: email, password: password}, cb);
 			}
 		};
 	})
 
 	.service('User', function($resource) {
 		 return $resource('/api/user', {}, {
-			'get': { 'method': 'GET', params : {}},
-			'save': { 'method': 'POST', params : {}}
+			get: { 'method': 'GET', params : {}},
+			save: { 'method': 'POST', params : {}},
+			passwd: { url: '/api/passwd', 'method': 'POST', params : {}}
 		});
 	})
 
@@ -82,11 +90,33 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		$rootScope.title('Contact');
 	})
 
+	.controller('Login', function ($rootScope, $scope, Auth) {
+		$rootScope.title('Login');
+		$scope.login = function() {
+			Auth.login($scope.email, $scope.password, function(res) {
+				alert('asd');
+				if (res.id) {
+
+				}
+			});
+		}
+	})
+
 	.controller('Account', function ($rootScope, $scope, User) {
 		$rootScope.title('Account');
 		$scope.save = function() {
 			User.save($rootScope.user, function(user) {
 				$rootScope.user = user;
+			});
+		};
+		$scope.passwd = function() {
+			if ($scope.pass1 != $scope.pass2) {
+				$scope.passwordError = true;
+				return;
+			}
+			User.passwd({pass: $scope.pass1}, function(user) {
+				$scope.password = '';
+				$scope.passwordError = false;
 			});
 		};
 	});

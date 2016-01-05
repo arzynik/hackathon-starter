@@ -15,6 +15,11 @@ class User extends \Tipsy\Resource {
 		return $user ? $user : false;
 	}
 
+	public static function byEmail($email) {
+		$user = self::query('select * from user where email=? limit 1', [$email])->get(0);
+		return $user ? $user : false;
+	}
+
 	public function exports() {
 		$props = $this->properties();
 		unset($props['password']);
