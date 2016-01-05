@@ -7,13 +7,21 @@ class User extends \App\Rest {
 		$this->inject(function($Request) {
 
 			if ($Request->method() == 'POST' && $Request->loc(2)) {
-				http_response_code(403);
-				exit;
+				return http_response_code(403);
 			}
 
 			$u = $Request->loc(2) ? $Request->loc(2) : $_SESSION['user'];
-
 			$user = new \App\User($u);
+
+			if ($Request->method() == 'DELETE') {
+				if ($Request->loc(2)) {
+					return http_response_code(403);
+				}
+				$user->delete();
+				echo json_encode(['status' => 'success']);
+				return;
+			}
+
 			if ($user->dbId()) {
 				if ($Request->method() == 'POST') {
 					$props = $Request->request();
