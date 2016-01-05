@@ -12,7 +12,7 @@
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/assets/app.scss" rel="stylesheet">
 	</head>
-	<body class="page-{{route}}">
+	<body class="page-{{route}}" ng-class="{init: true}">
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
@@ -26,8 +26,10 @@
 						<li ng-class="{active: route == 'contact'}"><a href="/contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li ng-class="{active: route == 'login'}"><a href="/login">Login</a></li>
-						<li ng-class="{active: route == 'signup'}"><a href="/signup">Create Account</a></li>
+						<li ng-class="{active: route == 'login'}" ng-show="!user.id"><a href="/login">Login</a></li>
+						<li ng-class="{active: route == 'signup'}" ng-show="!user.id"><a href="/signup">Create Account</a></li>
+						<li ng-class="{active: route == 'logout'}" ng-show="user.id"><a href="/logout">Logout</a></li>
+						<li ng-class="{active: route == 'account'}" ng-show="user.id"><a href="/account">Account</a></li>
 					</ul>
 				</div>
 			</div>

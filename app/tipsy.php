@@ -15,17 +15,26 @@ if (getenv('CLEARDB_DATABASE_URL')) {
 CLEARDB_DATABASE_URL
 DATABASE_URL
 MONGOLAB_URI
-REDIS_URL
 */
 
-//die($_SERVER['REQUEST_URI']);
-//die($_REQUEST['__url']);
 
+// define routes here for anything that uses route params
 Tipsy::router()
 	->when('api/user/:id', '\App\Controller\Api\User')
-	->when('api/user/:id/edit', '\App\Controller\Api\User\Edit')
 	->when('auth/:service', '\App\Controller\Auth')
 	->when('scss/assets/:file', '\App\Controller\Scss');
 
+
+// simple session management using redis
+Tipsy::middleware('Session', [
+	'run' => function() {
+		/*
+		$client = new \Predis\Client(getenv('REDIS_URL') ? getenv('REDIS_URL') : Tipsy::config()['redis']);
+		$handler = new App\Session($client);
+		session_set_save_handler($handler);
+		*/
+		session_start();
+	}
+]);
 
 Tipsy::run();

@@ -41,7 +41,7 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		});
 	})
 
-	.run(function($rootScope, $location, $route) {
+	.run(function($rootScope, $location, $route, Auth) {
 		$rootScope.$on('$routeChangeSuccess', function ($event, $currentRoute, $previousRoute) {
 			$rootScope.route = $route.current.action;
 		});
@@ -54,11 +54,22 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		var p = Trianglify({variance: '0.77', seed: null, x_colors: 'random', y_colors: 'match_x', cell_size: 30});
 		$rootScope.triangles = p.svg({includeNamespace: true});
 		$rootScope.triangles = '<svg style="-webkit-filter: brightness(.5) contrast(200%)" xmlns="http://www.w3.org/2000/svg" width="600" height="400">' + $rootScope.triangles.innerHTML + '</svg>';
+
+		$rootScope.user = Auth.user();
 	})
 
-	.service('DemoService', function($resource, $routeParams, $location, $rootScope) {
-		var up = $resource('/upload', {}, {
-			'upload': { 'method': 'POST', params : { 'action' : 'upload' }}
+	.service('Auth', function($resource, User) {
+		return {
+			user: function() {
+				return User.get();
+			}
+		};
+	})
+
+	.service('User', function($resource) {
+		 return $resource('/api/user', {}, {
+			'get': { 'method': 'GET', params : {}},
+			'save': { 'method': 'POST', params : {}}
 		});
 	})
 
@@ -69,6 +80,15 @@ angular.module('App', ['ngRoute', 'ngResource'])
 
 	.controller('Contact', function ($rootScope) {
 		$rootScope.title('Contact');
+	})
+
+	.controller('Account', function ($rootScope, $scope, User) {
+		$rootScope.title('Account');
+		$scope.save = function() {
+			User.save($rootScope.user, function(user) {
+				$rootScope.user = user;
+			});
+		};
 	});
 
 

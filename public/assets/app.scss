@@ -25,6 +25,12 @@ a, button {
 .navbar {
 	transition: background-color .5s ease;
 }
+.navbar .navbar-right {
+	display: none;
+}
+.init .navbar .navbar-right {
+	display: block;
+}
 .page-home .navbar:not(.shrink) {
 	background: transparent;
 }

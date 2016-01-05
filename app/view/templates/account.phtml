@@ -2,34 +2,33 @@
 	<div class="page-header">
 		<h3>Profile Information</h3>
 	</div>
-	<form action="/account/profile" method="POST" class="form-horizontal">
-		<input type="hidden" name="_csrf" value="1feVgVr9i66k2+0Rxmr9a6OcZa/Q/cJWT8Izo=">
+	<form class="form-horizontal">
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Email</label>
-			<div class="col-sm-4"><input type="email" name="email" id="email" class="form-control"></div>
+			<div class="col-sm-4"><input type="email" name="email" id="email" class="form-control" ng-model="user.email"></div>
 		</div>
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Name</label>
-			<div class="col-sm-4"><input type="text" name="name" id="name" class="form-control"></div>
+			<div class="col-sm-4"><input type="text" name="name" id="name" class="form-control" ng-model="user.name"></div>
 		</div>
 		<div class="form-group">
 			<label for="gender" class="col-sm-2 control-label">Gender</label>
-			<div class="col-sm-4"><label class="radio col-sm-4"><input type="radio" checked name="gender" value="male" data-toggle="radio"><span>Male</span></label><label class="radio col-sm-4"><input type="radio" name="gender" value="female" data-toggle="radio"><span>Female</span></label></div>
+			<div class="col-sm-4"><label class="radio col-sm-4"><input type="radio" checked name="gender" value="male" data-toggle="radio" ng-model="user.gender"><span>Male</span></label><label class="radio col-sm-4"><input type="radio" name="gender" value="female" data-toggle="radio" ng-model="user.gender"><span>Female</span></label></div>
 		</div>
 		<div class="form-group">
 			<label for="location" class="col-sm-2 control-label">Location</label>
-			<div class="col-sm-4"><input type="text" name="location" id="location" class="form-control"></div>
+			<div class="col-sm-4"><input type="text" name="location" id="location" class="form-control" ng-model="user.location"></div>
 		</div>
 		<div class="form-group">
 			<label for="website" class="col-sm-2 control-label">Website</label>
-			<div class="col-sm-4"><input type="text" name="website" id="website" class="form-control"></div>
+			<div class="col-sm-4"><input type="text" name="website" id="website" class="form-control" ng-model="user.website"></div>
 		</div>
 		<div class="form-group">
 			<label for="gravatar" class="col-sm-2 control-label">Gravatar</label>
-			<div class="col-sm-4"><img  width="100" height="100" class="profile"></div>
+			<div class="col-sm-4"><img ng-src="{{user.image}}" width="100" height="100" class="profile"></div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-4"><button type="submit" class="btn btn btn-primary"><i class="fa fa-pencil"></i>Update Profile</button></div>
+			<div class="col-sm-offset-2 col-sm-4"><button type="submit" class="btn btn btn-primary" ng-click="save()"><i class="fa fa-pencil"></i>Update Profile</button></div>
 		</div>
 	</form>
 	<div class="page-header">
@@ -52,7 +51,8 @@
 		<h3>Delete Account</h3>
 	</div>
 	<p>You can delete your account, but keep in mind this action is irreversible.</p>
-	<form action="/account/delete" method="POST"><input type="hidden" name="_csrf" value="1feVgVr9i66k2+0Rxmr9a6OcZa/Q/cJWT8Izo="><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete my account</button></form>
+
+	<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete my account</button>
 	<div class="page-header">
 		<h3>Linked Accounts</h3>
 	</div>

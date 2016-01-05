@@ -41,6 +41,7 @@ class Auth extends \Tipsy\Controller {
 				case 'github':
 					$data = json_decode($service->request('user'), true);
 					print_r($data);
+					exit;
 					$result = [
 						id => $data['id'],
 						name => $data['name']
@@ -49,6 +50,22 @@ class Auth extends \Tipsy\Controller {
 			}
 
 			if ($result['id']) {
+				$user = \App\User::byAuth($result['id'], $name);
+				if (!$user) {
+					$user = new \App\User([
+						'name' => $result['name']
+					]);
+					$user->save();
+
+					$auth = new \App\Auth([
+						'value' => $result['id'],
+						'type' => $name,
+						'user' => $user->id
+					]);
+					$auth->save();
+				}
+
+				$_SESSION['user'] = $user->id;
 				header('Location: /account');
 			}
 
