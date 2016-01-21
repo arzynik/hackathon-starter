@@ -25,10 +25,13 @@ Tipsy::router()
 	->when('scss/assets/:file', '\App\Controller\Scss');
 
 
+// initilize config from database, config files, and env variables
+Tipsy::service('cfgr', '\App\Cfgr');
+
 // simple session management using redis
 Tipsy::middleware('Session', [
 	'run' => function() {
-		$redis = getenv('REDIS_URL') ? getenv('REDIS_URL') : Tipsy::config()['redis'];
+		$redis = getenv('REDIS_URL');
 
 		if ($redis) {
 			$client = new \Predis\Client($redis);
@@ -40,8 +43,6 @@ Tipsy::middleware('Session', [
 	}
 ]);
 
-// initilize config from database
-Tipsy::service('cfgr', '\App\Cfgr');
 
 // pointless headers
 header('X-Powered-By: PHP/'.phpversion().'; arzynik/hackathon-starter');

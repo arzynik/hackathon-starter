@@ -15,11 +15,13 @@ class Session implements \SessionHandlerInterface {
 	public function open($savePath, $sessionName) {
 		// No action necessary because connection is injected
 		// in constructor and arguments are not applicable.
+		return true;
 	}
 
 	public function close() {
 		$this->db = null;
 		unset($this->db);
+		return true;
 	}
 
 	public function read($id) {
@@ -32,11 +34,11 @@ class Session implements \SessionHandlerInterface {
 	public function write($id, $data) {
 		$id = $this->prefix . $id;
 		$this->db->set($id, $data);
-		$this->db->expire($id, $this->ttl);
+		return $this->db->expire($id, $this->ttl);
 	}
 
 	public function destroy($id) {
-		$this->db->del($this->prefix . $id);
+		return $this->db->del($this->prefix . $id);
 	}
 
 	public function gc($maxLifetime) {
