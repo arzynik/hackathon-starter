@@ -1,6 +1,5 @@
 {
 	"require": {
-		"php": "~7.0@beta",
 		"tipsyphp/tipsy": "dev-master",
 		"tipsyphp/tipsy-mvc": "dev-master",
 		"lusitanian/oauth": "^0.8.3",

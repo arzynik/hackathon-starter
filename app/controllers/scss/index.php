@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 class Scss extends \Tipsy\Controller {
-	public function init() {
+	public function init($hi = null) {
 		$this->inject(function($Params) {
 			$scss = new \Leafo\ScssPhp\Compiler;
 			$scss->setImportPaths($this->tipsy()->config()['path'].'public/assets/');

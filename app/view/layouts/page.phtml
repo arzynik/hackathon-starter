@@ -28,7 +28,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li ng-class="{active: route == 'login'}" ng-show="!user.id"><a href="/login">Login</a></li>
 						<li ng-class="{active: route == 'signup'}" ng-show="!user.id"><a href="/signup">Create Account</a></li>
-						<li ng-class="{active: route == 'logout'}" ng-show="user.id"><a href="/logout">Logout</a></li>
+						<li ng-show="user.id"><a href="" ng-click="logout()">Logout</a></li>
 						<li ng-class="{active: route == 'account'}" ng-show="user.id"><a href="/account">Account</a></li>
 					</ul>
 				</div>

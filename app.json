@@ -4,7 +4,7 @@
 	"website": "https://github.com/arzynik/hackathon-starter",
 	"repository": "https://github.com/arzynik/hackathon-starter",
 	"keywords": ["tipsy", "mvc", "framework", "hackathon"],
-	"addons": ["heroku-postgresql", "heroku-redis", "cleardb", "mongolab"],
+	"addons": ["heroku-postgresql", "heroku-redis", "cleardb"],
 	"env": {
 		"ENV": "heroku"
 	},

@@ -40,6 +40,9 @@ Tipsy::middleware('Session', [
 	}
 ]);
 
+// initilize config from database
+Tipsy::service('cfgr', '\App\Cfgr');
+
 // pointless headers
 header('X-Powered-By: PHP/'.phpversion().'; arzynik/hackathon-starter');
 

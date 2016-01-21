@@ -71,19 +71,30 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		$rootScope.triangles = '<svg style="-webkit-filter: brightness(.5) contrast(200%)" xmlns="http://www.w3.org/2000/svg" width="600" height="400">' + $rootScope.triangles.innerHTML + '</svg>';
 
 		$rootScope.user = Auth.user();
+		$rootScope.logout = Auth.logout;
 	})
 
-	.service('Auth', function($resource, User) {
+	.service('Auth', function($rootScope, $resource, User) {
 		var res = $resource('/api/', {}, {
-			auth: { url: '/api/login', 'method': 'POST', params : {}}
+			login: { url: '/api/login', 'method': 'POST', params : {}},
+			logout: { url: '/api/logout', params : {}},
+			signup: { url: '/api/signup', 'method': 'POST', params : {}}
 		});
 
 		return {
 			user: function() {
 				return User.get();
 			},
-			login: function(email, password, cb) {
-				res.auth({email: email, password: password}, cb);
+			login: function(email, password, win, fail) {
+				res.login({email: email, password: password}, win, fail);
+			},
+			signup: function(email, password, win, fail) {
+				res.signup({email: email, password: password}, win, fail);
+			},
+			logout: function() {
+				res.logout({}, function() {
+					$rootScope.user = {};
+				});
 			}
 		};
 	})
@@ -103,14 +114,37 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		$rootScope.title('Contact');
 	})
 
-	.controller('Login', function ($rootScope, $scope, Auth) {
+	.controller('Login', function ($location, $rootScope, $scope, Auth) {
 		$rootScope.title('Login');
 		$scope.login = function() {
+			$scope.loginError = false;
 			Auth.login($scope.email, $scope.password, function(res) {
-				alert('asd');
-				if (res.id) {
+				$rootScope.user = res;
+				$location.path('/account');
+			}, function() {
+				$scope.loginError = true;
+			});
+		}
+	})
 
+	.controller('Signup', function ($location, $rootScope, $scope, Auth) {
+		$rootScope.title('Signup');
+		$scope.signup = function() {
+			if (!$scope.email || !$scope.password || $scope.password != $scope.confirm) {
+				$scope.signupError = true;
+				return;
+			}
+			$scope.signupError = false;
+			Auth.signup($scope.email, $scope.password, function(res) {
+				if (res.error) {
+					$scope.signupError = res.error;
+					return;
 				}
+				$rootScope.user = res;
+				$location.path('/account');
+
+			}, function() {
+				$scope.signupError = true;
 			});
 		}
 	})
@@ -136,7 +170,7 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		};
 		$scope.delete = function() {
 			User.delete(function(user) {
-				$rootScope.user = null;
+				$rootScope.user = {};
 				// location.href = location.href;
 			});
 		};
