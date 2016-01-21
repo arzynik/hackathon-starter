@@ -4,11 +4,11 @@ namespace App\Controller;
 
 class Scss extends \Tipsy\Controller {
 	public function init($hi = null) {
-		$this->inject(function($Params) {
+		$this->inject(function($Params, $Request) {
 			$scss = new \Leafo\ScssPhp\Compiler;
 			$scss->setImportPaths($this->tipsy()->config()['path'].'public/assets/');
 			$scss->setFormatter('Leafo\ScssPhp\Formatter\Compressed');
-			$file = $this->tipsy()->config()['path'].'public/assets/'.$Params->file;
+			$file = $this->tipsy()->config()['path'].'public/'.$Request->path();
 			$data = $scss->compile(file_get_contents($file));
 			$mtime = filemtime($file);
 
