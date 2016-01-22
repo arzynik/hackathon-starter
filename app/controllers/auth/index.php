@@ -79,7 +79,7 @@ class Auth extends \Tipsy\Controller {
 
 			switch ($name) {
 				case 'facebook':
-					$data = json_decode($service->request('/me?fields=name,gender'.$email ? ',email' : ''), true);
+					$data = json_decode($service->request('/me?fields=name,gender'.($email ? ',email' : '')), true);
 
 					$result = [
 						id => $data['id'],
