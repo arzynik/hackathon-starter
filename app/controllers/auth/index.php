@@ -37,19 +37,50 @@ class Auth extends \Tipsy\Controller {
 				case 'github':
 					$scope = ['user:email'];
 					break;
+				case 'google':
+					$scope = ['userinfo_email', 'userinfo_profile'];
+					break;
+				case 'instagram':
+					$scope = ['basic'];
+					break;
+			}
+		} else {
+			switch ($name) {
+				case 'instagram':
+					$scope = ['basic'];
+					break;
 			}
 		}
 
 		$service = $serviceFactory->createService($name, $credentials, $storage, $scope);
 
-		if (!empty($_GET['code'])) {
+		$code = $name == 'twitter' ? 'oauth_token' : 'code';
 
-			$state = isset($_GET['state']) ? $_GET['state'] : null;
-			$token = $service->requestAccessToken($_GET['code'], $state);
+
+		if (!empty($_GET[$code])) {
+
+			switch ($name) {
+				case 'twitter':
+					$token = $storage->retrieveAccessToken('Twitter');
+
+					$service->requestAccessToken(
+						$_GET['oauth_token'],
+						$_GET['oauth_verifier'],
+						$token->getRequestTokenSecret()
+					);
+					break;
+
+				default:
+					$state = isset($_GET['state']) ? $_GET['state'] : null;
+					$token = $service->requestAccessToken($_GET[$code], $state);
+					break;
+			}
+
 
 			switch ($name) {
 				case 'facebook':
 					$data = json_decode($service->request('/me?fields=name,gender'.$email ? ',email' : ''), true);
+
 					$result = [
 						id => $data['id'],
 						name => $data['name'],
@@ -60,11 +91,30 @@ class Auth extends \Tipsy\Controller {
 
 				case 'twitter':
 					$data = json_decode($service->request('account/verify_credentials.json'), true);
-					print_r($data);
-					exit;
 					$result = [
 						id => $data['id'],
 						name => $data['name']
+					];
+					break;
+
+				case 'instagram':
+					$data = json_decode($service->request('users/self'), true);
+					$result = [
+						id => $data['data']['id'],
+						name => $data['data']['full_name'],
+						avatar => $data['data']['profile_picture'],
+						website => $data['data']['website']
+					];
+					break;
+
+				case 'google':
+					$data = json_decode($service->request('userinfo'), true);
+					$result = [
+						id => $data['id'],
+						name => $data['name'],
+						email => $data['email'],
+						gender => $data['gender'],
+						avatar => $data['picture']
 					];
 					break;
 
@@ -125,7 +175,12 @@ class Auth extends \Tipsy\Controller {
 			}
 
 		} else {
-			$url = $service->getAuthorizationUri();
+			$request = [];
+			if ($name == 'twitter') {
+				$request = ['oauth_token' => $service->requestRequestToken()->getRequestToken()];
+			}
+
+			$url = $service->getAuthorizationUri($request);
 			header('Location: ' . $url);
 		}
 	}
