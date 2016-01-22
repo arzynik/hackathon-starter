@@ -45,10 +45,12 @@ class User extends \Tipsy\Resource {
 				select auth.* from auth
 				where
 					user=?
-				limit 1
 			', [$this->id]);
 			foreach ($auths as $auth) {
 				$props['auth'][$auth->type] = $auth->value;
+			}
+			if ($this->password) {
+				$props['auth']['local'] = true;
 			}
 
 			$public = array_merge($public, $private);

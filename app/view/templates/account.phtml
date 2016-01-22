@@ -38,10 +38,13 @@
 
 
 	<div class="page-header">
-		<h3>Change Password</h3>
+		<h3>{{user.auth.local ? 'Change' : 'Add a'}} Password</h3>
 	</div>
 	<div class="alert alert-success" role="alert" ng-show="message.password == 1">Password successfully saved</div>
 	<div class="alert alert-danger" role="alert" ng-show="message.password == 2">Failed saving password</div>
+
+	<div class="alert alert-info" role="alert" ng-show="!user.email">To login with a password, you must enter an <b>Email Address</b> above.</div>
+
 
 	<form class="form-horizontal">
 		<div class="form-group">
@@ -53,7 +56,7 @@
 			<div class="col-sm-4"><input type="password" name="confirmPassword" id="confirmPassword" class="form-control" ng-model="pass2"></div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-4"><button type="submit" class="btn btn btn-primary" ng-click="passwd()"><i class="fa fa-lock"></i>Change Password</button></div>
+			<div class="col-sm-offset-2 col-sm-4"><button type="submit" class="btn btn btn-primary" ng-click="passwd()"><i class="fa fa-lock"></i>{{user.auth.local ? 'Change' : 'Add a'}} Password</button></div>
 		</div>
 	</form>
 
@@ -68,12 +71,30 @@
 	<div class="page-header">
 		<h3>Linked Accounts</h3>
 	</div>
-	<p><a href="/auth/instagram" ng-href="{'/account/unlink/instagram' : user.auth.instagram}" ng-class="{'text-danger': user.auth.instagram}">Link your Instagram account</a></p>
-	<p><a href="/auth/google" ng-href="{'/account/unlink/google' : user.auth.google}" ng-class="{'text-danger': user.auth.google}">Link your Google account</a></p>
-	<p><a href="/auth/facebook" ng-href="{'/account/unlink/facebook' : user.auth.facebook}" ng-class="{'text-danger': user.auth.facebook}">Link your Facebook account</a></p>
-	<p><a href="/auth/twitter" ng-href="{'/account/unlink/twitter' : user.auth.twitter}" ng-class="{'text-danger': user.auth.twitter}">Link your Twitter account</a></p>
-	<p><a href="/auth/github" ng-href="{'/account/unlink/github' : user.auth.github}" ng-class="{'text-danger': user.auth.github}">Link your GitHub account</a></p>
-	<p><a href="/auth/linkedin" ng-href="{'/account/unlink/linkedin' : user.auth.linkedin}" ng-class="{'text-danger': user.auth.linkedin}">Link your LinkedIn account</a></p>
+	<p>
+		<a ng-show="user.auth.instagram" href="/account/unlink/instagram" class="text-danger">Unlink your Instagram account</a>
+		<a ng-hide="user.auth.instagram" href="/auth/instagram" target="_top">Link your Instagram account</a>
+	</p>
+	<p>
+		<a ng-show="user.auth.google" href="/account/unlink/google" class="text-danger">Unlink your Google account</a>
+		<a ng-hide="user.auth.google" href="/auth/google" target="_top">Link your Google account</a>
+	</p>
+	<p>
+		<a ng-show="user.auth.facebook" href="/account/unlink/facebook" class="text-danger">Unlink your Facebook account</a>
+		<a ng-hide="user.auth.facebook" href="/auth/facebook" target="_top">Link your Facebook account</a>
+	</p>
+	<p>
+		<a ng-show="user.auth.twitter" href="/account/unlink/twitter" class="text-danger">Unlink your Twitter account</a>
+		<a ng-hide="user.auth.twitter" href="/auth/twitter" target="_top">Link your Twitter account</a>
+	</p>
+	<p>
+		<a ng-show="user.auth.github" href="/account/unlink/github" class="text-danger">Unlink your GitHub account</a>
+		<a ng-hide="user.auth.github" href="/auth/github" target="_top">Link your GitHub account</a>
+	</p>
+	<p>
+		<a ng-show="user.auth.linkedin" href="/account/unlink/linkedin" class="text-danger">Unlink your Linkedin account</a>
+		<a ng-hide="user.auth.linkedin" href="/auth/linkedin" target="_top">Link your Linkedin account</a>
+	</p>
 </div>
 
 

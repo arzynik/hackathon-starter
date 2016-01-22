@@ -170,6 +170,12 @@ class Auth extends \Tipsy\Controller {
 					$auth->save();
 				}
 
+				// user mismatch. fail
+				if ($user && Tipsy::middleware('Session')->user() && $user->id != Tipsy::middleware('Session')->user()->id) {
+					header('Location: /account');
+					exit;
+				}
+
 				$_SESSION['user'] = $user->id;
 				header('Location: /account');
 			}
