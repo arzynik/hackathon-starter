@@ -27,7 +27,12 @@ class User extends \App\Rest {
 					$props = $Request->request();
 					unset($props['id']);
 					$user->serialize($props);
-					$user->save();
+					try {
+						$user->save();
+					} catch (\Exception $e) {
+						echo json_encode(['status' => false, 'error' => 'Email already exists']);
+						return;
+					}
 				}
 				echo $user->json();
 			} else {

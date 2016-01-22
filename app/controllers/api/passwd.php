@@ -10,7 +10,7 @@ class Passwd extends \App\Rest {
 				exit;
 			}
 
-			$user = new \App\User($_SESSION['user']);
+			$user = Tipsy::middleware('Session')->user();
 			if ($user->dbId()) {
 				$user->password = password_hash($Request->pass, PASSWORD_DEFAULT);
 				$user->save();

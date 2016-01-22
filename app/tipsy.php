@@ -24,6 +24,7 @@ Tipsy::router()
 // initilize config from database, config files, and env variables
 Tipsy::service('cfgr', '\App\Cfgr');
 Tipsy::service('Mail', '\App\Mail');
+Tipsy::service('User', '\App\User');
 
 //echo Tipsy::service('cfgr')->get('auth-facebook-key');
 //echo Tipsy::service('cfgr')->set('auth-facebook-key', 'test');
@@ -40,6 +41,9 @@ Tipsy::middleware('Session', [
 		}
 
 		session_start();
+	},
+	'user' => function() {
+		return $_SESSION['user'] ? $this->tipsy()->service('User')->load($_SESSION['user']) : null;
 	}
 ]);
 

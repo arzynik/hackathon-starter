@@ -6,7 +6,7 @@ use Tipsy\Tipsy;
 
 class Mail extends \Tipsy\Service {
 	public function __construct() {
-		$this->_service = Tipsy::service('cfgr')->get('api-mailer');
+		$this->_service = Tipsy::service('cfgr')->get('api-send-mailer');
 		$this->_client = new \Mailgun\Mailgun(Tipsy::service('cfgr')->get('api-'.$this->_service.'-key'));
 	}
 

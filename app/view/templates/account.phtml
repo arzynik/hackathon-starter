@@ -2,7 +2,10 @@
 	<div class="page-header">
 		<h3>Profile Information</h3>
 	</div>
+
 	<div class="alert alert-success" role="alert" ng-show="message.profile">Profile successfully saved</div>
+	<div class="alert alert-danger" role="alert" ng-show="message.profileError">{{message.profileError}}</div>
+
 	<form class="form-horizontal">
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Email</label>
@@ -65,12 +68,12 @@
 	<div class="page-header">
 		<h3>Linked Accounts</h3>
 	</div>
-	<p><a href="/auth/instagram">Link your Instagram account</a></p>
-	<p><a href="/auth/google">Link your Google account</a></p>
-	<p><a href="/account/unlink/facebook" class="text-danger">Unlink your Facebook account</a></p>
-	<p><a href="/auth/twitter">Link your Twitter account</a></p>
-	<p><a href="/auth/github">Link your GitHub account</a></p>
-	<p><a href="/auth/linkedin">Link your LinkedIn account</a></p>
+	<p><a href="/auth/instagram" ng-href="{'/account/unlink/instagram' : user.auth.instagram}" ng-class="{'text-danger': user.auth.instagram}">Link your Instagram account</a></p>
+	<p><a href="/auth/google" ng-href="{'/account/unlink/google' : user.auth.google}" ng-class="{'text-danger': user.auth.google}">Link your Google account</a></p>
+	<p><a href="/auth/facebook" ng-href="{'/account/unlink/facebook' : user.auth.facebook}" ng-class="{'text-danger': user.auth.facebook}">Link your Facebook account</a></p>
+	<p><a href="/auth/twitter" ng-href="{'/account/unlink/twitter' : user.auth.twitter}" ng-class="{'text-danger': user.auth.twitter}">Link your Twitter account</a></p>
+	<p><a href="/auth/github" ng-href="{'/account/unlink/github' : user.auth.github}" ng-class="{'text-danger': user.auth.github}">Link your GitHub account</a></p>
+	<p><a href="/auth/linkedin" ng-href="{'/account/unlink/linkedin' : user.auth.linkedin}" ng-class="{'text-danger': user.auth.linkedin}">Link your LinkedIn account</a></p>
 </div>
 
 

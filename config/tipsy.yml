@@ -9,6 +9,8 @@ db:
   database: hackathon-starter
 
 api:
-  mailer: mailgun
+  send-mailer: mailgun
 
 title: Hackathon Starter
+apiconfig:
+  email: true

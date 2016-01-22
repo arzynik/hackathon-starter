@@ -41,6 +41,11 @@ angular.module('App', ['ngRoute', 'ngResource'])
 				templateUrl: '/templates/reset.html',
 				auth: false
 			})
+			.when('/apis', {
+				action: 'apis',
+				controller: 'Apis',
+				templateUrl: '/templates/apis.html'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});
@@ -191,7 +196,13 @@ angular.module('App', ['ngRoute', 'ngResource'])
 
 		$scope.message = {};
 		$scope.save = function() {
+			$scope.message = {};
 			User.save($rootScope.user, function(user) {
+				if (user.error) {
+					$scope.message.profileError = user.error;
+					return;
+				}
+
 				$rootScope.user = user;
 				$scope.message.profile = 1;
 			});
