@@ -20,6 +20,11 @@ class User extends \Tipsy\Resource {
 		return $user ? $user : false;
 	}
 
+	public static function byReset($link) {
+		$user = self::query('select * from user where reset=? limit 1', [$link])->get(0);
+		return $user ? $user : false;
+	}
+
 	public function exports() {
 		$props = $this->properties();
 		unset($props['password']);

@@ -23,6 +23,10 @@ Tipsy::router()
 
 // initilize config from database, config files, and env variables
 Tipsy::service('cfgr', '\App\Cfgr');
+Tipsy::service('Mail', '\App\Mail');
+
+//echo Tipsy::service('cfgr')->get('auth-facebook-key');
+//echo Tipsy::service('cfgr')->set('auth-facebook-key', 'test');
 
 // simple session management using redis
 Tipsy::middleware('Session', [

@@ -16,8 +16,8 @@ class Auth extends \Tipsy\Controller {
 
 		$storage = new Session();
 		$credentials = new Credentials(
-			$this->tipsy()->config()['auth'][$name]['key'],
-			$this->tipsy()->config()['auth'][$name]['secret'],
+			Tipsy::service('cfgr')->get('api-'.$name.'-key'),
+			Tipsy::service('cfgr')->get('api-'.$name.'-secret'),
 			$this->tipsy()->request()->url()
 		);
 

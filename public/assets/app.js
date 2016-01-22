@@ -4,35 +4,41 @@ angular.module('App', ['ngRoute', 'ngResource'])
 			.when('/', {
 				action: 'home',
 				controller: 'Home',
-				templateUrl: 'templates/home.html'
+				templateUrl: '/templates/home.html'
 			})
 			.when('/contact', {
 				action: 'contact',
 				controller: 'Contact',
-				templateUrl: 'templates/contact.html'
+				templateUrl: '/templates/contact.html'
 			})
 			.when('/login', {
 				action: 'login',
 				controller: 'Login',
-				templateUrl: 'templates/login.html',
+				templateUrl: '/templates/login.html',
 				auth: false
 			})
 			.when('/signup', {
 				action: 'signup',
 				controller: 'Signup',
-				templateUrl: 'templates/signup.html',
+				templateUrl: '/templates/signup.html',
 				auth: false
 			})
 			.when('/account', {
 				action: 'account',
 				controller: 'Account',
-				templateUrl: 'templates/account.html',
+				templateUrl: '/templates/account.html',
 				auth: true
 			})
-			.when('/forgot', {
+			.when('/forgot-password', {
 				action: 'forgot',
 				controller: 'Forgot',
-				templateUrl: 'templates/forgot.html',
+				templateUrl: '/templates/forgot.html',
+				auth: false
+			})
+			.when('/reset-password/:link', {
+				action: 'reset',
+				controller: 'Reset',
+				templateUrl: '/templates/reset.html',
 				auth: false
 			})
 			.otherwise({
@@ -48,6 +54,7 @@ angular.module('App', ['ngRoute', 'ngResource'])
 	.run(function($rootScope, $location, $route, $location, Auth) {
 		$rootScope.$on('$routeChangeStart', function ($event, $currentRoute) {
 			if ($currentRoute.auth === true && (!$rootScope.user || !$rootScope.user.id)) {
+				// needs a promise
 				//$location.path('/login');
 				//return;
 			}
@@ -74,26 +81,24 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		$rootScope.logout = Auth.logout;
 	})
 
-	.service('Auth', function($rootScope, $resource, User) {
+	.service('Auth', function($location, $rootScope, $resource, User) {
 		var res = $resource('/api/', {}, {
 			login: { url: '/api/login', 'method': 'POST', params : {}},
 			logout: { url: '/api/logout', params : {}},
-			signup: { url: '/api/signup', 'method': 'POST', params : {}}
+			signup: { url: '/api/signup', 'method': 'POST', params : {}},
+			forgot: { url: '/api/forgot', 'method': 'POST', params : {}},
+			reset: { url: '/api/reset', 'method': 'POST', params : {}}
 		});
 
 		return {
 			user: function() {
 				return User.get();
 			},
-			login: function(email, password, win, fail) {
-				res.login({email: email, password: password}, win, fail);
-			},
-			signup: function(email, password, win, fail) {
-				res.signup({email: email, password: password}, win, fail);
-			},
+			resource: res,
 			logout: function() {
 				res.logout({}, function() {
 					$rootScope.user = {};
+					$location.path('/');
 				});
 			}
 		};
@@ -118,11 +123,43 @@ angular.module('App', ['ngRoute', 'ngResource'])
 		$rootScope.title('Login');
 		$scope.login = function() {
 			$scope.loginError = false;
-			Auth.login($scope.email, $scope.password, function(res) {
+			Auth.resource.login({email: $scope.email, password: $scope.password}, function(res) {
 				$rootScope.user = res;
 				$location.path('/account');
 			}, function() {
 				$scope.loginError = true;
+			});
+		}
+	})
+
+	.controller('Reset', function ($rootScope, $routeParams, $scope, Auth) {
+		$rootScope.title('Reset Password');
+		$scope.reset = function() {
+
+			if (!$scope.password || $scope.password != $scope.confirm) {
+				$scope.resetError = true;
+				return;
+			}
+
+			$scope.resetError = false;
+
+			Auth.resource.reset({link: $routeParams.link, password: $scope.password}, function(res) {
+				$scope.resetComplete = true;
+				$rootScope.user = res;
+			}, function() {
+				$scope.resetError = true;
+			});
+		}
+	})
+
+	.controller('Forgot', function ($rootScope, $scope, Auth) {
+		$rootScope.title('Forgot Password');
+		$scope.forgot = function() {
+			$scope.forgotError = false;
+			Auth.resource.forgot({email: $scope.email}, function(res) {
+				$scope.forgotComplete = true;
+			}, function() {
+				$scope.forgotError = true;
 			});
 		}
 	})
@@ -135,7 +172,7 @@ angular.module('App', ['ngRoute', 'ngResource'])
 				return;
 			}
 			$scope.signupError = false;
-			Auth.signup($scope.email, $scope.password, function(res) {
+			Auth.resource.signup({email: $scope.email, password: $scope.password}, function(res) {
 				if (res.error) {
 					$scope.signupError = res.error;
 					return;
@@ -151,6 +188,7 @@ angular.module('App', ['ngRoute', 'ngResource'])
 
 	.controller('Account', function ($rootScope, $scope, $location, User) {
 		$rootScope.title('Account');
+
 		$scope.message = {};
 		$scope.save = function() {
 			User.save($rootScope.user, function(user) {
